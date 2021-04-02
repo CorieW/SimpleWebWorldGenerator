@@ -1,5 +1,5 @@
 # Web-WorldGenerator
-URL: https://unruffled-feynman-60676c.netlify.app/
+URL: https://web-worldgenerator.netlify.app/
 
 Ideas:
 - Merge the climate map and height map to get an accurate temperature at every elevation.
