@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>World Generator</title>
+        <link rel='stylesheet' href='./styles/styles.css'>
+        <script src='./libs/noise.js'></script>
+        <script src='./libs/jquery.js'></script>
+    </head>
+    <body>
+        <div id='canvas-container'>
+            <div class='zoom-container'>
+                <canvas id='worldCanvas'></canvas>
+            </div>
+        </div>
+
+        <div id='settings-container'>
+            <h1>Settings</h1>
+            <div class='scroll-container'>
+                <form id='settings-form' onsubmit='submitDrawWorld(event)'>
+                    <div id='height-layer' class='input-section-container'>
+                        <h2>World Settings</h2>
+                        <div class='merged-input-groups'>
+                            <div class='input-group'>
+                                <label for='width-input'>Width</label>
+                                <input id='width-input' type='number' name='width' min='1' max='2999' value='1000'/>
+                            </div>
+                            <div class='input-group'>
+                                <label for='height-input'>Height</label>
+                                <input id='height-input' type='number' name='height' min='1' max='2999' value='500'/>
+                            </div>
+                        </div>
+                        <div class='merged-input-groups'>
+                            <div class='input-group'>
+                                <label for='xOffset-input'>X Offset</label>
+                                <input id='xOffset-input' type='number' name='xOffset' min='0' value='0'/>
+                            </div>
+                            <div class='input-group'>
+                                <label for='yOffset-input'>Y Offset</label>
+                                <input id='yOffset-input' type='number' name='yOffset' min='0' value='0'/>
+                            </div>
+                        </div>
+                        <div class='input-group'>
+                            <label for='yOffset-input'>Y Offset</label>
+                            <input id='yOffset-input' type='number' name='yOffset' min='0' value='0'/>
+                        </div>
+                    </div>
+                    <div id='height-layer' class='input-section-container'>
+                        <h2>Height Settings</h2>
+                        <div class='input-group'>
+                            <label for='height-seed-input'>Seed</label>
+                            <input id='height-seed-input' type='number' name='height-seed' value='0'/>
+                        </div>
+                        <div class='input-group'>
+                            <label for='height-scale-input'>Scale</label>
+                            <input id='height-scale-input' type='number' name='height-scale' min='0' value='150'/>
+                        </div>
+                        <div class='input-group'>
+                            <label for='height-octaves-input'>Octaves</label>
+                            <input id='height-octaves-input' type='number' name='height-octaves' min='1' max='16' value='3'/>
+                        </div>
+                        <div class='input-group'>
+                            <label for='height-persistence-input'>Persistence</label>
+                            <input id='height-persistence-input' type='number' name='height-persistence' step='any' value='0.5'/>
+                        </div>
+                        <div class='input-group'>
+                            <label for='height-lacunarity-input'>Lacunarity</label>
+                            <input id='height-lacunarity-input' type='number' name='height-lacunarity' value='2'/>
+                        </div>
+                        <div class='input-group'>
+                            <label for='height-multiplier-input'>Multiplier</label>
+                            <input id='height-multiplier-input' type='number' name='height-multiplier' min='0' value='1'/>
+                        </div>
+                    </div>
+                    <div id='climate-layer' class='input-section-container'>
+                        <h2>Climate Settings</h2>
+                        <div class='input-group'>
+                            <label for='climate-eqY-input'>Equator Y</label>
+                            <input id='climate-eqY-input' type='number' name='climate-eqY' min='0' max='1' step='any' value='0.5'/>
+                        </div>
+                        <div class='input-group'>
+                            <label for='climate-eqSize-input'>Equator Size</label>
+                            <input id='climate-eqSize-input' type='number' name='climate-eqSize' min='0' max='1' step='any' value='0.25'/>
+                        </div>
+                        <div class='input-group'>
+                            <label for='climate-tempMultiplier-input'>Temp Multiplier</label>
+                            <input id='climate-tempMultiplier-input' type='number' name='climate-tempMultiplier' min='0' step='any' value='1'/>
+                        </div>
+                        <div class='input-group'>
+                            <label for='climate-tempDropRate-input'>Temp Drop Rate</label>
+                            <input id='climate-tempDropRate-input' type='number' name='climate-tempDropRate' step='any' value='1.5'/>
+                        </div>
+                        <div class='input-group'>
+                            <label for='climate-tempHeightDropRate-input'>Temp Height Drop Rate</label>
+                            <input id='climate-tempHeightDropRate-input' type='number' name='climate-tempHeightDropRate' step='any' value='0.3'/>
+                        </div>
+                    </div>
+                    <div id='climate-layer' class='input-section-container'>
+                        <h2>Biome Settings</h2>
+                        <div class='input-group'>
+                            <label for='biome-seed-input'>Seed</label>
+                            <input id='biome-seed-input' type='number' name='biome-seed' value='0'/>
+                        </div>
+                        <div class='input-group'>
+                            <label for='biome-scale-input'>Scale</label>
+                            <input id='biome-scale-input' type='number' name='biome-scale' min='0' value='70'/>
+                        </div>
+                        <div class='input-group'>
+                            <label for='biome-octaves-input'>Octaves</label>
+                            <input id='biome-octaves-input' type='number' name='biome-octaves' min='1' max='16' value='3'/>
+                        </div>
+                        <div class='input-group'>
+                            <label for='biome-persistence-input'>Persistence</label>
+                            <input id='biome-persistence-input' type='number' name='biome-persistence' step='any' value='0.5'/>
+                        </div>
+                        <div class='input-group'>
+                            <label for='biome-lacunarity-input'>Lacunarity</label>
+                            <input id='biome-lacunarity-input' type='number' name='biome-lacunarity' value='2'/>
+                        </div>
+                        <div class='input-group'>
+                            <label for='biome-multiplier-input'>Multiplier</label>
+                            <input id='biome-multiplier-input' type='number' name='biome-multiplier' min='0' value='1'/>
+                        </div>
+                    </div>
+                    <input id='submit-btn' type='submit' value='Generate'/>
+                </form>
+            </div>
+        </div>
+        
+        <script src="./js/worldGenMath.js"></script>
+        <script src="./js/settings.js"></script>
+        <script src="./js/climate.js"></script>
+        <script src="./js/utils.js"></script>
+        <script src="./js/worldGenerator.js"></script>
+        <script src="./js/main.js"></script>
+    </body>
+</html>
