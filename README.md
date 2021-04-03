@@ -13,6 +13,7 @@ Todo:
 - Don't generate all at one time, as it will lag the page and it's a bad UX. Instead load gradually and show a loading screen.
 - Ability to use both Perlin Noise and Simplex Noise, which ever is chosen.
 - Different ways of drawing the maps, with lines and polygons and such.
+- Responsive to screen sizes or prevent use for specific screen sizes.
 
 Issues:
 - Seed just changes offset slightly.
