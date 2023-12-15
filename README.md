@@ -8,7 +8,7 @@ The distance will be filled in with the a 0.5 opacity black pixel to mark elevat
 problems if the noise drops off too fast or slowly, resulting in no line or thick lines.)
 
 
-Todo:
+Future improvements:
 - Fade biomes into each other.
 - Don't generate all at one time, as it will lag the page and it's a bad UX. Instead load gradually and show a loading screen.
 - Ability to use both Perlin Noise and Simplex Noise, which ever is chosen.
