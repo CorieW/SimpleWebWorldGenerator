@@ -1,5 +1,5 @@
-# Web-WorldGenerator
-URL: https://web-worldgenerator.netlify.app/
+# SimpleWebWorldGenerator
+Available at: https://web-worldgenerator.netlify.app/
 
 Ideas:
 - Merge the climate map and height map to get an accurate temperature at every elevation.
